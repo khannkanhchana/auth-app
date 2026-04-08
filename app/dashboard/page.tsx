@@ -9,16 +9,25 @@ export default async function DashboardPage() {
   if (!authToken) {
     redirect("/login");
   }
+   console.log("authToken", authToken)
+
 
   const token = authToken?.value 
 
   const response = await getAdminData(token);
+
+  // if response is not ok, redirect to login
   if (!authToken) {
     redirect("/login");
   }
+
+ 
+
+  // is user is not admin, redirect to login
   if (response.role !== "admin") {
     redirect("/login");
   }
+
 
   return (
     <main>

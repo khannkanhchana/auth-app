@@ -6,6 +6,7 @@ export default async function SocialDashboard(){
     const session = await auth.api.getSession({
         headers: await headers()
     })
+    // dont login
     if(!session){
         redirect("/login")
     }

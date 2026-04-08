@@ -18,17 +18,15 @@ export async function loginAdmin(loginData: loginRequest) {
 
 
 //  Get
-export async function getAdminData(){
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/profile`, {
+export async function getAdminData(token: string){
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/auth/profile`, {
         method: "GET",
-        headers: { 
+        headers: {
             "Authorization": `Bearer ${token}`
-         }
+        }
     })
-    // if(!res.ok){
-    //     throw Error("Failed to fetch admin data")
-    // }
     const data = await res.json()
     return data;
-
 }
+
+    
